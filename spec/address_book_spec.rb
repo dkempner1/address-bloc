@@ -1,7 +1,7 @@
 require_relative '../models/address_book'
 
 RSpec.describe AddressBook do
-  describe "attributes" do
+  context "attributes" do
     it "should respond to entries" do
       book = AddressBook.new
       expect(book).to respond_to(:entries)
@@ -18,7 +18,26 @@ RSpec.describe AddressBook do
     end
   end
 
-  describe "#add_entry" do
+  context"#remove_entry"
+    it "removes only one entry from the address book" do
+      book = AddressBook.new
+      book.add_entry("David Kempner", "010.012.1518", "davekempner@kempner.com")
+
+      name = "Ada Lovelace"
+      phone_number = "010.012.1815"
+      email_address = "augusta.king@lovelace.com"
+      book.add_entry(name, phone_number, email_address)
+
+
+      expect(book.entries.size).to eq 2
+      book.remove_entry(name, phone_number, email_address)
+      expect(book.entries.size).to eq 1
+      expect(book.entries.first.name).to eq("David Kempner")
+
+    end
+  end
+
+  context "#add_entry" do
     it "adds only one entry to the address book" do
       book = AddressBook.new
       book.add_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
