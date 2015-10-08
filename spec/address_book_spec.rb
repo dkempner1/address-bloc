@@ -9,6 +9,17 @@ RSpec.describe AddressBook do
     expect(entry.email).to eql expected_email
   end
 
+  context "#evaporate" do
+    it "should delete all entries" do
+      book.add_entry("Ada Lovelace", "010.012.1815", "augusta.king@lovelace.com")
+      book.add_entry("Ada Lovelace", "010.012.1815", "augusta.king@lovelace.com")
+      book.add_entry("Ada Lovelace", "010.012.1815", "augusta.king@lovelace.com")
+
+      book.evaporate
+      expect(book.entries).to eq []
+    end
+  end
+
   context "attributes" do
     it "should respond to entries" do
       expect(book).to respond_to(:entries)
