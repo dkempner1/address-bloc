@@ -7,6 +7,9 @@ require_relative "entry.rb"
  	def initialize
  		@entries = []
  	end
+  def evaporate
+    @entries = []
+  end
 
  	def add_entry(name, phone, email)
  		index = 0

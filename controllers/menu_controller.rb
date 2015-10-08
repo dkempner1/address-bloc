@@ -13,6 +13,7 @@ class MenuController
     puts "3 - Search for an entry"
     puts "4 - Import entries from CSV"
     puts "5 - Exit"
+    puts "6 - Evaporate all entries"
     puts "Enter your selection: "
 
     selection = gets.to_i
@@ -41,6 +42,11 @@ class MenuController
       puts "Good-bye"
       # exiting from the program without giving error
       exit(0)
+    when 6
+      system "clear"
+      @address_book.evaporate
+      puts "All entries have been deleted"
+      main_menu
     else
       system "clear"
       puts "Sorry that is an invalid input"
@@ -101,8 +107,6 @@ class MenuController
     puts "New entry created"
   end
 
-  # def search_entry
-  # end
 
   def read_csv
     print "Enter CSV file to import: "
@@ -191,4 +195,4 @@ class MenuController
    end
 
 
-end  
+end
